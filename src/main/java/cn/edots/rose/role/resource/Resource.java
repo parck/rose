@@ -18,7 +18,7 @@ public abstract class Resource extends Domain {
 
     private List<Resource> children;
 
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, targetEntity = Resource.class)
+    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     public Resource getParent() {
         return parent;

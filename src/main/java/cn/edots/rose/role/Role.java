@@ -15,9 +15,19 @@ public abstract class Role extends Domain {
 
     private static final long serialVersionUID = -3436005697269313872L;
 
+    private String alias;
     private String username;
     private String password;
     private int value;
+
+    @Column(name = "alias", length = 20, nullable = false)
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 
     @Column(name = "username", length = 24, nullable = false)
     public String getUsername() {

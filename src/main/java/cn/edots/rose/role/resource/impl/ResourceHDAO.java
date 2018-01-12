@@ -15,7 +15,7 @@ public class ResourceHDAO extends DomainHDAO<Long, Resource> implements Resource
     public int set(int value, List<Long> resIds) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE " + type.getSimpleName());
-        hql.append(" SET roles = roles | :value");
+        hql.append(" SET roles = (roles \\| :value)");
         hql.append(" WHERE id IN :ids");
         return sessionFactory.getCurrentSession()
                 .createQuery(hql.toString())
@@ -27,7 +27,7 @@ public class ResourceHDAO extends DomainHDAO<Long, Resource> implements Resource
     public boolean set(int value, Long resId) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE " + type.getSimpleName());
-        hql.append(" SET roles = roles | :value");
+        hql.append(" SET roles = (roles \\| :value)");
         hql.append(" WHERE id = :resId");
         return sessionFactory.getCurrentSession()
                 .createQuery(hql.toString())
@@ -39,7 +39,7 @@ public class ResourceHDAO extends DomainHDAO<Long, Resource> implements Resource
     public int cancel(int value, List<Long> resIds) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE " + type.getSimpleName());
-        hql.append(" SET roles = roles ^ :value");
+        hql.append(" SET roles = (roles \\^ :value)");
         hql.append(" WHERE id IN :ids");
         return sessionFactory.getCurrentSession()
                 .createQuery(hql.toString())
@@ -51,7 +51,7 @@ public class ResourceHDAO extends DomainHDAO<Long, Resource> implements Resource
     public boolean cancel(int value, Long resId) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE " + type.getSimpleName());
-        hql.append(" SET roles = roles ^ :value");
+        hql.append(" SET roles = (roles \\^ :value)");
         hql.append(" WHERE id = :resId");
         return sessionFactory.getCurrentSession()
                 .createQuery(hql.toString())

@@ -33,11 +33,11 @@ public class ResourceServiceBean extends DomainServiceBean<Long, Resource> imple
 
     @Transactional
     public boolean cancel(Role role, List<Long> resIds) {
-        return resourceHDAO.set(role.getValue(), resIds) == resIds.size();
+        return resourceHDAO.cancel(role.getValue(), resIds) == resIds.size();
     }
 
     @Transactional
     public boolean cancel(Role role, Long resId) {
-        return resourceHDAO.set(role.getValue(), resId);
+        return resourceHDAO.cancel(role.getValue(), resId);
     }
 }

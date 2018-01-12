@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "resource_tbl")
-public abstract class Resource extends Domain {
+public class Resource extends Domain {
 
     private static final long serialVersionUID = -5336647483187775872L;
 

@@ -15,6 +15,8 @@ public class Resource extends Domain {
     private String label;
     private String icon;
     private String link;
+    private boolean active;
+    private int sequence;
     private int roles;
 
     private List<Resource> children;
@@ -54,6 +56,22 @@ public class Resource extends Domain {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public int getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
     }
 
     public int getRoles() {

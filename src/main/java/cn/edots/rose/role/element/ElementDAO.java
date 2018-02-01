@@ -1,10 +1,10 @@
-package cn.edots.rose.role.resource;
+package cn.edots.rose.role.element;
 
 import cn.edots.ormosia.dao.DomainDAO;
 
 import java.util.List;
 
-public interface ResourceDAO<RES extends Resource> extends DomainDAO<Long, RES> {
+public interface ElementDAO<RES extends Element> extends DomainDAO<Long, RES> {
 
 
     int set(int value, List<Long> resIds);

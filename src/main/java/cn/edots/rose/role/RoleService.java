@@ -1,4 +1,4 @@
-package cn.edots.rose.role.core;
+package cn.edots.rose.role;
 
 import cn.edots.ormosia.service.DomainService;
 import cn.edots.rose.role.Role;

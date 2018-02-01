@@ -1,8 +1,8 @@
-package cn.edots.rose.role.core.impl;
+package cn.edots.rose.role.impl;
 
 import cn.edots.ormosia.dao.DomainHDAO;
 import cn.edots.rose.role.Role;
-import cn.edots.rose.role.core.RoleDAO;
+import cn.edots.rose.role.RoleDAO;
 
 public class RoleHDAO<R extends Role> extends DomainHDAO<Long, R> implements RoleDAO<R> {
 

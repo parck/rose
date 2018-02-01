@@ -1,23 +1,23 @@
-package cn.edots.rose.role.resource.impl;
+package cn.edots.rose.role.element.impl;
 
 import cn.edots.ormosia.dao.DomainDAO;
 import cn.edots.ormosia.service.DomainServiceBean;
 import cn.edots.rose.role.Role;
-import cn.edots.rose.role.resource.Resource;
-import cn.edots.rose.role.resource.ResourceDAO;
-import cn.edots.rose.role.resource.ResourceService;
+import cn.edots.rose.role.element.Element;
+import cn.edots.rose.role.element.ElementDAO;
+import cn.edots.rose.role.element.ElementService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class ResourceServiceBean extends DomainServiceBean<Long, Resource> implements ResourceService {
+public class ElementServiceBean extends DomainServiceBean<Long, Element> implements ElementService {
 
     @javax.annotation.Resource
-    private ResourceDAO resourceHDAO;
+    private ElementDAO resourceHDAO;
 
-    public DomainDAO<Long, Resource> getEntityDAO() {
+    public DomainDAO<Long, Element> getEntityDAO() {
         return resourceHDAO;
     }
 

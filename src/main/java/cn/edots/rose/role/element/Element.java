@@ -1,4 +1,4 @@
-package cn.edots.rose.role.resource;
+package cn.edots.rose.role.element;
 
 import cn.edots.ormosia.model.Domain;
 
@@ -6,12 +6,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "resource_tbl")
-public class Resource extends Domain {
+@Table(name = "element_tbl")
+public class Element extends Domain {
 
     private static final long serialVersionUID = -5336647483187775872L;
 
-    private Resource parent;
+    private Element parent;
     private String label;
     private String icon;
     private String link;
@@ -19,15 +19,15 @@ public class Resource extends Domain {
     private int sequence;
     private int roles;
 
-    private List<Resource> children;
+    private List<Element> children;
 
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
-    public Resource getParent() {
+    public Element getParent() {
         return parent;
     }
 
-    public void setParent(Resource parent) {
+    public void setParent(Element parent) {
         this.parent = parent;
     }
 
@@ -83,11 +83,11 @@ public class Resource extends Domain {
     }
 
     @Transient
-    public List<Resource> getChildren() {
+    public List<Element> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Resource> children) {
+    public void setChildren(List<Element> children) {
         this.children = children;
     }
 }

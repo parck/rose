@@ -1,11 +1,11 @@
-package cn.edots.rose.role.resource;
+package cn.edots.rose.role.element;
 
 import cn.edots.ormosia.service.DomainService;
 import cn.edots.rose.role.Role;
 
 import java.util.List;
 
-public interface ResourceService extends DomainService<Long, Resource> {
+public interface ElementService extends DomainService<Long, Element> {
 
     boolean set(Role role, List<Long> resIds);
 

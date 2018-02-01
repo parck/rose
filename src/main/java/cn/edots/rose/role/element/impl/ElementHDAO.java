@@ -1,16 +1,14 @@
-package cn.edots.rose.role.resource.impl;
+package cn.edots.rose.role.element.impl;
 
 import cn.edots.ormosia.dao.DomainHDAO;
-import cn.edots.rose.role.resource.Resource;
-import cn.edots.rose.role.resource.ResourceDAO;
-import org.hibernate.query.criteria.internal.CriteriaUpdateImpl;
+import cn.edots.rose.role.element.Element;
+import cn.edots.rose.role.element.ElementDAO;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.criteria.CriteriaUpdate;
 import java.util.List;
 
 @Repository
-public class ResourceHDAO extends DomainHDAO<Long, Resource> implements ResourceDAO<Resource> {
+public class ElementHDAO extends DomainHDAO<Long, Element> implements ElementDAO<Element> {
 
     public int set(int value, List<Long> resIds) {
         StringBuilder hql = new StringBuilder();

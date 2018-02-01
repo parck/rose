@@ -1,9 +1,9 @@
-package cn.edots.rose.role.core.impl;
+package cn.edots.rose.role.impl;
 
 import cn.edots.ormosia.service.DomainServiceBean;
 import cn.edots.rose.role.Role;
-import cn.edots.rose.role.core.RoleDAO;
-import cn.edots.rose.role.core.RoleService;
+import cn.edots.rose.role.RoleDAO;
+import cn.edots.rose.role.RoleService;
 
 public abstract class RoleServiceBean<R extends Role> extends DomainServiceBean<Long, R> implements RoleService<R> {
 

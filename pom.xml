@@ -15,24 +15,29 @@
         </repository>
     </repositories>
 
+    <properties>
+        <spring.version>4.3.14.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.github.parck</groupId>
             <artifactId>ormosia</artifactId>
-            <version>0.1.8</version>
+            <version>0.2.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.3.9.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>4.3.9.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.github.parck</groupId>
             <artifactId>ormosia</artifactId>
-            <version>0.1.7</version>
+            <version>0.1.8</version>
         </dependency>
 
         <dependency>

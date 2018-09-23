@@ -17,45 +17,16 @@ public class Role extends Domain {
 
     private static final long serialVersionUID = -3436005697269313872L;
 
-    private String alias;
-    private String username;
-    private String password;
-    private int value;
+    private String name;
     private List<Element> elements;
 
-    @Column(name = "alias", length = 20, nullable = false)
-    public String getAlias() {
-        return alias;
+    @Column(name = "name", length = 20, nullable = false, unique = true)
+    public String getName() {
+        return name;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    @Column(name = "username", length = 24, nullable = false)
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Column(name = "password", length = 64, nullable = false)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)

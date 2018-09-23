@@ -10,7 +10,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-public abstract class AbsRoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
+@Repository
+public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
 
     @Transactional(readOnly = true, rollbackFor = {Exception.class})
     public Role getById(Long roleId, Criterion... criteria) {

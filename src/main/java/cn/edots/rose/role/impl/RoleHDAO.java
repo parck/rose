@@ -22,6 +22,7 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
         return (Role) criterion.uniqueResult();
     }
 
+    @Transactional(readOnly = true, rollbackFor = {Exception.class})
     public Role getByName(String name, Criterion... criteria) {
         Criteria criterion = sessionFactory.getCurrentSession().createCriteria(Role.class);
         criterion.add(Restrictions.eq("name", name));

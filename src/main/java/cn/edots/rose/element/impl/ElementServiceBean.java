@@ -21,20 +21,4 @@ public class ElementServiceBean extends DomainServiceBean<Long, Element> impleme
     public DomainDAO<Long, Element> getEntityDAO() {
         return resourceHDAO;
     }
-
-    public boolean set(Role role, List<Long> resIds) {
-        return resourceHDAO.set(role.getValue(), resIds) == resIds.size();
-    }
-
-    public boolean set(Role role, Long resId) {
-        return resourceHDAO.set(role.getValue(), resId);
-    }
-
-    public boolean cancel(Role role, List<Long> resIds) {
-        return resourceHDAO.cancel(role.getValue(), resIds) == resIds.size();
-    }
-
-    public boolean cancel(Role role, Long resId) {
-        return resourceHDAO.cancel(role.getValue(), resId);
-    }
 }

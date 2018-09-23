@@ -17,7 +17,6 @@ public class Element extends Domain {
     private String link;
     private boolean active;
     private int sequence;
-    private int roles;
 
     private List<Element> children;
 
@@ -72,14 +71,6 @@ public class Element extends Domain {
 
     public void setSequence(int sequence) {
         this.sequence = sequence;
-    }
-
-    public int getRoles() {
-        return roles;
-    }
-
-    public void setRoles(int roles) {
-        this.roles = roles;
     }
 
     @Transient

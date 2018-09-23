@@ -11,8 +11,9 @@ import java.util.List;
  * @Company wemoons.com
  * @Date 2017-12-06.
  */
-@MappedSuperclass
-public abstract class Role extends Domain {
+@Entity
+@Table(name = "role_tbl")
+public class Role extends Domain {
 
     private static final long serialVersionUID = -3436005697269313872L;
 

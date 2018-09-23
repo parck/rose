@@ -1,21 +1,32 @@
 package cn.edots.rose.role.impl;
 
+import cn.edots.ormosia.dao.DomainDAO;
 import cn.edots.ormosia.service.DomainServiceBean;
 import cn.edots.rose.element.Element;
 import cn.edots.rose.role.Role;
 import cn.edots.rose.role.RoleDAO;
 import cn.edots.rose.role.RoleService;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-public abstract class RoleServiceBean<R extends Role> extends DomainServiceBean<Long, R> implements RoleService<R> {
+@Service
+public class RoleServiceBean extends DomainServiceBean<Long, Role> implements RoleService {
 
-    public R login(String username, String password) {
-        return ((RoleDAO<R>) getEntityDAO()).get(username, password);
+    @Resource
+    private RoleDAO roleDAO;
+
+    public DomainDAO<Long, Role> getEntityDAO() {
+        return roleDAO;
     }
 
-    public List<Element> elements(R role) {
-        role = ((RoleDAO<R>) getEntityDAO()).getById(role.getId());
+    public Role login(String username, String password) {
+        return ((RoleDAO) getEntityDAO()).get(username, password);
+    }
+
+    public List<Element> elements(Role role) {
+        role = ((RoleDAO) getEntityDAO()).getById(role.getId());
         if (role == null) return null;
         return role.getElements();
     }

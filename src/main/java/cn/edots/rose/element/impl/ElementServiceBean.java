@@ -1,11 +1,11 @@
-package cn.edots.rose.role.element.impl;
+package cn.edots.rose.element.impl;
 
 import cn.edots.ormosia.dao.DomainDAO;
 import cn.edots.ormosia.service.DomainServiceBean;
 import cn.edots.rose.role.Role;
-import cn.edots.rose.role.element.Element;
-import cn.edots.rose.role.element.ElementDAO;
-import cn.edots.rose.role.element.ElementService;
+import cn.edots.rose.element.Element;
+import cn.edots.rose.element.ElementDAO;
+import cn.edots.rose.element.ElementService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

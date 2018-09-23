@@ -1,9 +1,10 @@
 package cn.edots.rose.role;
 
 import cn.edots.ormosia.model.Domain;
+import cn.edots.rose.element.Element;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * @Author ParckLee.
@@ -19,6 +20,7 @@ public abstract class Role extends Domain {
     private String username;
     private String password;
     private int value;
+    private List<Element> elements;
 
     @Column(name = "alias", length = 20, nullable = false)
     public String getAlias() {
@@ -53,5 +55,15 @@ public abstract class Role extends Domain {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinTable(name = "role_element_tbl", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "element_id"))
+    public List<Element> getElements() {
+        return elements;
+    }
+
+    public void setElements(List<Element> elements) {
+        this.elements = elements;
     }
 }

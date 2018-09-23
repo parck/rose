@@ -4,12 +4,14 @@ import cn.edots.ormosia.dao.DomainHDAO;
 import cn.edots.rose.element.Element;
 import cn.edots.rose.element.ElementDAO;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
 public class ElementHDAO extends DomainHDAO<Long, Element> implements ElementDAO<Element> {
 
+    @Transactional(rollbackFor = {Exception.class})
     public int set(int value, List<Long> resIds) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE resource_tbl");
@@ -22,6 +24,7 @@ public class ElementHDAO extends DomainHDAO<Long, Element> implements ElementDAO
                 .executeUpdate();
     }
 
+    @Transactional(rollbackFor = {Exception.class})
     public boolean set(int value, Long resId) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE resource_tbl");
@@ -34,6 +37,7 @@ public class ElementHDAO extends DomainHDAO<Long, Element> implements ElementDAO
                 .executeUpdate() == 1;
     }
 
+    @Transactional(rollbackFor = {Exception.class})
     public int cancel(int value, List<Long> resIds) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE resource_tbl");
@@ -46,6 +50,7 @@ public class ElementHDAO extends DomainHDAO<Long, Element> implements ElementDAO
                 .executeUpdate();
     }
 
+    @Transactional(rollbackFor = {Exception.class})
     public boolean cancel(int value, Long resId) {
         StringBuilder hql = new StringBuilder();
         hql.append(" UPDATE resource_tbl");

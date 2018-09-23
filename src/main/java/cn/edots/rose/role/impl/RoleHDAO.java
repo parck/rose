@@ -9,11 +9,13 @@ import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public class RoleHDAO<R extends Role> extends DomainHDAO<Long, R> implements RoleDAO<R> {
 
+    @Transactional(rollbackFor = {Exception.class})
     public R get(String username, String password) {
         StringBuilder sql = new StringBuilder();
         sql.append(" FROM ");
@@ -28,6 +30,7 @@ public class RoleHDAO<R extends Role> extends DomainHDAO<Long, R> implements Rol
                 .uniqueResult();
     }
 
+    @Transactional(rollbackFor = {Exception.class})
     public R getById(Long roleId, Criterion... criteria) {
         Criteria criterion = sessionFactory.getCurrentSession().createCriteria(type.getSimpleName());
         criterion.add(Restrictions.eq("id", roleId));

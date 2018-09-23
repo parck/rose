@@ -9,34 +9,31 @@ import cn.edots.rose.element.ElementService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ElementServiceBean extends DomainServiceBean<Long, Element> implements ElementService {
 
-    @javax.annotation.Resource
+    @Resource
     private ElementDAO resourceHDAO;
 
     public DomainDAO<Long, Element> getEntityDAO() {
         return resourceHDAO;
     }
 
-    @Transactional
     public boolean set(Role role, List<Long> resIds) {
         return resourceHDAO.set(role.getValue(), resIds) == resIds.size();
     }
 
-    @Transactional
     public boolean set(Role role, Long resId) {
         return resourceHDAO.set(role.getValue(), resId);
     }
 
-    @Transactional
     public boolean cancel(Role role, List<Long> resIds) {
         return resourceHDAO.cancel(role.getValue(), resIds) == resIds.size();
     }
 
-    @Transactional
     public boolean cancel(Role role, Long resId) {
         return resourceHDAO.cancel(role.getValue(), resId);
     }

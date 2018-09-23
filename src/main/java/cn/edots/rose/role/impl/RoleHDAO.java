@@ -15,13 +15,13 @@ import java.util.List;
 
 public class RoleHDAO<R extends Role> extends DomainHDAO<Long, R> implements RoleDAO<R> {
 
-    @Transactional(rollbackFor = {Exception.class})
+    @Transactional(readOnly = true, rollbackFor = {Exception.class})
     public R get(String username, String password) {
         StringBuilder sql = new StringBuilder();
         sql.append(" FROM ");
         sql.append(type.getSimpleName());
         sql.append(" WHERE ");
-        sql.append("     (cellphone = :username OR username = :username) ");
+        sql.append("     (username = :username OR username = :username) ");
         sql.append("     AND password = :password");
         return (R) sessionFactory.getCurrentSession()
                 .createQuery(sql.toString())
@@ -30,9 +30,9 @@ public class RoleHDAO<R extends Role> extends DomainHDAO<Long, R> implements Rol
                 .uniqueResult();
     }
 
-    @Transactional(rollbackFor = {Exception.class})
+    @Transactional(readOnly = true, rollbackFor = {Exception.class})
     public R getById(Long roleId, Criterion... criteria) {
-        Criteria criterion = sessionFactory.getCurrentSession().createCriteria(type.getSimpleName());
+        Criteria criterion = sessionFactory.getCurrentSession().createCriteria(type);
         criterion.add(Restrictions.eq("id", roleId));
         criterion.createAlias("elements", "element", CriteriaSpecification.LEFT_JOIN);
         if (criteria != null) for (Criterion c : criteria) criterion.add(c);

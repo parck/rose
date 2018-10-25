@@ -21,7 +21,7 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
         criterion.createAlias("elements", "element", CriteriaSpecification.LEFT_JOIN);
         criterion.createAlias("elements.children", "child", CriteriaSpecification.LEFT_JOIN);
         if (criteria != null) for (Criterion c : criteria) criterion.add(c);
-        criterion.add(Restrictions.isNull("element.parent"));
+        criterion.add(Restrictions.isNull("element.children"));
         criterion.addOrder(Order.asc("element.sequence"));
         return (Role) criterion.uniqueResult();
     }
@@ -33,7 +33,7 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
         criterion.createAlias("elements", "element", CriteriaSpecification.LEFT_JOIN);
         criterion.createAlias("elements.children", "child", CriteriaSpecification.LEFT_JOIN);
         if (criteria != null) for (Criterion c : criteria) criterion.add(c);
-        criterion.add(Restrictions.isNull("element.parent"));
+        criterion.add(Restrictions.isNull("element.children"));
         criterion.addOrder(Order.asc("element.sequence"));
         return (Role) criterion.uniqueResult();
     }

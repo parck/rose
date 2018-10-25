@@ -5,6 +5,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,12 +14,23 @@ public class Element extends Domain {
 
     private static final long serialVersionUID = -5336647483187775872L;
 
+    private Element parent;
     private String label;
     private String icon;
     private String link;
     private boolean active;
     private int sequence;
     private Set<Element> children;
+
+    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    public Element getParent() {
+        return parent;
+    }
+
+    public void setParent(Element parent) {
+        this.parent = parent;
+    }
 
     @Column(name = "label", nullable = false, length = 20)
     public String getLabel() {

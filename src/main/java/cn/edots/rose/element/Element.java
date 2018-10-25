@@ -1,9 +1,11 @@
 package cn.edots.rose.element;
 
 import cn.edots.ormosia.model.Domain;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "element_tbl")
@@ -16,7 +18,7 @@ public class Element extends Domain {
     private String link;
     private boolean active;
     private int sequence;
-    private List<Element> children;
+    private Set<Element> children;
 
     @Column(name = "label", nullable = false, length = 20)
     public String getLabel() {
@@ -61,13 +63,14 @@ public class Element extends Domain {
         this.sequence = sequence;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinColumn(name = "parent_id")
-    public List<Element> getChildren() {
+    public Set<Element> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Element> children) {
+    public void setChildren(Set<Element> children) {
         this.children = children;
     }
 }

@@ -11,24 +11,12 @@ public class Element extends Domain {
 
     private static final long serialVersionUID = -5336647483187775872L;
 
-    private Element parent;
     private String label;
     private String icon;
     private String link;
     private boolean active;
     private int sequence;
-
     private List<Element> children;
-
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    public Element getParent() {
-        return parent;
-    }
-
-    public void setParent(Element parent) {
-        this.parent = parent;
-    }
 
     @Column(name = "label", nullable = false, length = 20)
     public String getLabel() {
@@ -73,7 +61,8 @@ public class Element extends Domain {
         this.sequence = sequence;
     }
 
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parent_id")
     public List<Element> getChildren() {
         return children;
     }

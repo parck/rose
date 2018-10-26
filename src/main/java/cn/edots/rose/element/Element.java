@@ -1,6 +1,7 @@
 package cn.edots.rose.element;
 
 import cn.edots.ormosia.model.Domain;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -22,6 +23,7 @@ public class Element extends Domain {
     private int sequence;
     private Set<Element> children;
 
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     public Element getParent() {

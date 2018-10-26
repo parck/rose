@@ -77,7 +77,7 @@ public class Element extends Domain {
         this.sequence = sequence;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "element_children_tbl", joinColumns = @JoinColumn(name = "parent_id"), inverseJoinColumns = @JoinColumn(name = "child_id"))
     public Set<Element> getChildren() {
         return children;

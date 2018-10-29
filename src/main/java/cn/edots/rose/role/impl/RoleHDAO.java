@@ -244,7 +244,7 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
         query.addScalar("childId", LongType.INSTANCE);
         query.addScalar("childDateCreated", DateType.INSTANCE);
         query.addScalar("childDeleted", BooleanType.INSTANCE);
-        query.addScalar("childLastUpdated", LongType.INSTANCE);
+        query.addScalar("childLastUpdated", DateType.INSTANCE);
         query.addScalar("childUuid", StringType.INSTANCE);
         query.addScalar("childVersion", IntegerType.INSTANCE);
         query.addScalar("childActive", BooleanType.INSTANCE);

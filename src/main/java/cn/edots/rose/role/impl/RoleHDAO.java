@@ -4,6 +4,7 @@ import cn.edots.ormosia.dao.DomainHDAO;
 import cn.edots.rose.role.Role;
 import cn.edots.rose.role.RoleDAO;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
@@ -18,11 +19,11 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
     public Role getById(Long roleId, Criterion... criteria) {
         Criteria criterion = sessionFactory.getCurrentSession().createCriteria(Role.class);
         criterion.add(Restrictions.eq("id", roleId));
-        criterion.createAlias("elements", "element", CriteriaSpecification.LEFT_JOIN);
-        criterion.createAlias("element.children", "child", CriteriaSpecification.LEFT_JOIN);
+        criterion.setFetchMode("elements", FetchMode.JOIN);
+        criterion.setFetchMode("elements.children", FetchMode.JOIN);
         if (criteria != null) for (Criterion c : criteria) criterion.add(c);
-        criterion.add(Restrictions.isNull("element.parent"));
-        criterion.addOrder(Order.asc("element.sequence"));
+        criterion.add(Restrictions.isNull("elements.parent"));
+        criterion.addOrder(Order.asc("elements.sequence"));
         return (Role) criterion.uniqueResult();
     }
 
@@ -30,11 +31,11 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
     public Role getByName(String name, Criterion... criteria) {
         Criteria criterion = sessionFactory.getCurrentSession().createCriteria(Role.class);
         criterion.add(Restrictions.eq("name", name));
-        criterion.createAlias("elements", "element", CriteriaSpecification.LEFT_JOIN);
-        criterion.createAlias("element.children", "child", CriteriaSpecification.LEFT_JOIN);
+        criterion.setFetchMode("elements", FetchMode.JOIN);
+        criterion.setFetchMode("elements.children", FetchMode.JOIN);
         if (criteria != null) for (Criterion c : criteria) criterion.add(c);
-        criterion.add(Restrictions.isNull("element.parent"));
-        criterion.addOrder(Order.asc("element.sequence"));
+        criterion.add(Restrictions.isNull("elements.parent"));
+        criterion.addOrder(Order.asc("elements.sequence"));
         return (Role) criterion.uniqueResult();
     }
 }

@@ -142,7 +142,9 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
                     element.setLink((String) map.get("elementLink"));
                     element.setSequence((Integer) map.get("elementSequence"));
                     elements.put(map.get("elementId"), element);
-                } else if (map.get("childId") != null) {
+                }
+
+                if (map.get("childId") != null) {
                     Set<Element> children = element.getChildren();
                     if (children == null) children = new HashSet<Element>();
                     Element child = new Element();
@@ -286,7 +288,9 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
                     element.setLink((String) map.get("elementLink"));
                     element.setSequence((Integer) map.get("elementSequence"));
                     elements.put(map.get("elementId"), element);
-                } else if (map.get("childId") != null) {
+                }
+
+                if (map.get("childId") != null) {
                     Set<Element> children = element.getChildren();
                     if (children == null) children = new HashSet<Element>();
                     Element child = new Element();

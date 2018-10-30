@@ -113,7 +113,7 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
 
         List<Map<String, Object>> list = query.list();
         Role role = null;
-        Map<Object, Element> elements = new HashMap<Object, Element>();
+        Map<Object, Element> elements = new LinkedHashMap<Object, Element>();
         for (Map<String, Object> map : list) {
             if (role == null) {
                 role = new Role();
@@ -259,7 +259,7 @@ public class RoleHDAO extends DomainHDAO<Long, Role> implements RoleDAO {
 
         List<Map<String, Object>> list = query.list();
         Role role = null;
-        Map<Object, Element> elements = new HashMap<Object, Element>();
+        Map<Object, Element> elements = new LinkedHashMap<Object, Element>();
         for (Map<String, Object> map : list) {
             if (role == null) {
                 role = new Role();
